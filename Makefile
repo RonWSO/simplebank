@@ -28,6 +28,6 @@ sqlc:
 	sqlc generate
 
 test:
-	go test -v -cover ./...
+	cd API && go test -v -cover ./...
 
 .PHONY: postgres createdb dropdb migrateup migratedown sqlc-run
