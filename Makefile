@@ -19,13 +19,13 @@ postgres:
 	docker run --name postgres12 -p 5432:5432 -e POSTGRES_USER=ronaldoliveira -e POSTGRES_PASSWORD=mypostgrespassword -d postgres:12-alpine
 
 migrateup:
-	migrate -path src/db/migration -database "postgresql://ronaldoliveira:mypostgrespassword@localhost:5432/simple_bank?sslmode=disable" -verbose up
+	cd API && migrate -path src/db/migration -database "postgresql://ronaldoliveira:mypostgrespassword@localhost:5432/simple_bank?sslmode=disable" -verbose up
 
 migratedown:
-	migrate -path src/db/migration -database "postgresql://ronaldoliveira:mypostgrespassword@localhost:5432/simple_bank?sslmode=disable" -verbose down
+	cd API && migrate -path src/db/migration -database "postgresql://ronaldoliveira:mypostgrespassword@localhost:5432/simple_bank?sslmode=disable" -verbose down
 
 sqlc:
-	sqlc generate
+	cd API && sqlc generate
 
 test:
 	cd API && go test -v -cover ./...
