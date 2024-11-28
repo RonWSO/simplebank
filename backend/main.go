@@ -1,9 +1,10 @@
 package main
 
 import (
-	"api/api"
-	db "api/db/sqlc"
-	"api/src/config"
+	"backend/api"
+	db "backend/db/sqlc"
+	"backend/routes"
+	"backend/src/config"
 	"database/sql"
 	"log"
 
@@ -24,6 +25,7 @@ func main() {
 	config.Load()
 	store := db.NewStore(conn)
 	server := api.NewServer(store)
+	routes.CreateRoutes(server)
 
 	err = server.Start(serverAddres)
 	if err != nil {

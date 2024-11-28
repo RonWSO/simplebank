@@ -19,10 +19,10 @@ postgres:
 	docker run --name postgres12 -p 5432:5432 -e POSTGRES_USER=ronaldoliveira -e POSTGRES_PASSWORD=mypostgrespassword -d postgres:12-alpine
 
 migrateup:
-	migrate -path src/db/migration -database "postgresql://ronaldoliveira:mypostgrespassword@localhost:5432/simple_bank?sslmode=disable" -verbose up
+	migrate -path db/migration -database "postgresql://ronaldoliveira:mypostgrespassword@localhost:5432/simple_bank?sslmode=disable" -verbose up
 
 migratedown:
-	migrate -path src/db/migration -database "postgresql://ronaldoliveira:mypostgrespassword@localhost:5432/simple_bank?sslmode=disable" -verbose down
+	migrate -path db/migration -database "postgresql://ronaldoliveira:mypostgrespassword@localhost:5432/simple_bank?sslmode=disable" -verbose down
 
 sqlc:
 	sqlc generate
@@ -30,4 +30,4 @@ sqlc:
 test:
 	go test -v -cover ./...
 
-.PHONY: postgres createdb dropdb migrateup migratedown sqlc-run
+.PHONY: postgres createdb dropdb migrateup migratedown sqlc -run

@@ -1,7 +1,7 @@
 package authentication
 
 import (
-	"api/src/config"
+	"backend/src/config"
 	"errors"
 	"fmt"
 	"net/http"

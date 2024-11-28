@@ -1,7 +1,7 @@
 package db
 
 import (
-	"api/src/util"
+	"backend/src/util"
 	"context"
 	"database/sql"
 	"fmt"
